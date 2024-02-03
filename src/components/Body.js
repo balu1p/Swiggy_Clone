@@ -3,9 +3,7 @@ import RestrauCards from "./RestrauCards";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
-
 const Body = ({ user }) => {
-
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestrau, setFilteredRestrau] = useState([]);
   const [searchInput, setSearchInput] = useState();
@@ -13,26 +11,21 @@ const Body = ({ user }) => {
   useEffect(() => {
     getRestaurant();
   }, []);
+
   async function getRestaurant() {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.66682693229555&lng=74.25015181303024&offset=15&sortBy=RELEVANCE&pageType=SEE_ALL&page_type=DESKTOP_SEE_ALL_LISTING"
     );
     const json = await data.json();
-    //conditional Rendering..
     setAllRestaurants(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestrau(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    console.log(allRestaurants);
-    console.log(filteredRestrau);
   }
 
   if (!allRestaurants) return null;
-  //  if(filteredRestrau?.length === 0) return <h1>No Restraunt Found :)</h1>
   return allRestaurants.length == 0 ? (
     <Shimmer />
   ) : (
@@ -62,7 +55,6 @@ const Body = ({ user }) => {
           <h1>No Restraunt Found</h1>
         ) : (
           filteredRestrau.map((restaurant) => {
-            // console.log(restaurant?.info?.id);
             return (
               <Link
                 to={"/restra/" + restaurant?.info?.id}

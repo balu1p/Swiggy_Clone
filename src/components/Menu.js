@@ -6,16 +6,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { addItem, removeItem,  } from "../utils/cartSlice";
 import { faStar, faAngleDown, faCirclePlus, faCircleMinus} from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
-import FoodItem from "./FoodItem";
+
 
 const link =
   "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
 const Menue = () => {
-  // const color = "text-green-500";
   const { id } = useParams();
   const data = useRestaurant(id);
-  console.log(data);
   const [activeIndices, setActiveIndices] = useState(
     data[1]?.map((_, index) => index) || []
   );
@@ -29,7 +27,6 @@ const Menue = () => {
       setActiveIndices([...activeIndices, index]);
     }
   };
-  console.log(activeIndices);
 
   const addFoodItem = (item) => {
     dispatch(addItem(item));

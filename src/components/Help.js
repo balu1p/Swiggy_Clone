@@ -24,8 +24,7 @@ const Section = ({id, title, description, isVisible, setIsVisible }) => {
 };
 
 const Help = () => {
-  const [visibleSection, setVisibleSection] = useState(""); /* Initially description of all questions are hidden */
-
+  const [visibleSection, setVisibleSection] = useState(""); 
   return (
     <div className="mt-20 container ">
       <div className="card-container">

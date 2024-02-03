@@ -1,7 +1,6 @@
 {
   "name": "namste-react",
   "version": "1.0.0",
-  "description": "",
   "main": "App.js",
   "scripts": {
     "start": "parcel index.html",
@@ -37,5 +36,6 @@
     "postcss": "^8.4.23",
     "process": "^0.11.10",
     "tailwindcss": "^3.3.2"
-  }
+  },
+  "description": ""
 }

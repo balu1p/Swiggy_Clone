@@ -1,6 +1,4 @@
-//Own Hook
 import { useState, useEffect } from "react";
-import {MENU_CDN} from "../constants"
 
 const useRestaurant = (id) =>{
     const [restaurant, setRestaurant] = useState(null);
@@ -17,7 +15,6 @@ const useRestaurant = (id) =>{
         const json = await data.json();
         setRestaurant(json?.data?.cards[0]?.card?.card?.info);
         setRestrauMenu(json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
-        console.log(json?.data);
       }
       useEffect(() => {
         getRestrauInfo();
